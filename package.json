@@ -19,15 +19,16 @@
     "clean": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage"
   },
   "dependencies": {
+    "underscore": "*"
+  },
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-jscs": "*",
     "istanbul": "*",
     "jscs": "*",
     "jshint": "*",
     "lint": "*",
     "mocha": "*",
-    "underscore": "*"
-  },
-  "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-jscs": "^0.6.2"
+    "should": "*"
   }
 }

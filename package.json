@@ -1,0 +1,35 @@
+{
+  "name": "it-dev-intro",
+  "version": "0.0.1",
+  "description": "example project",
+  "authors": [
+    {
+      "name": "Dmytro Pinskyi",
+      "url": "http://neverblued.info/"
+    }
+  ],
+  "license": "MIT",
+  "repository": "neverblued/it-dev-intro",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint . --reporter=./node_modules/jshint-full-path/index.js",
+    "checkStyle": "./node_modules/.bin/jscs .",
+    "pretest": "npm run-script lint && npm run-script checkStyle",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
+    "posttest": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage"
+  },
+  "dependencies": {
+    "istanbul": "*",
+    "jscs": "*",
+    "jshint": "*",
+    "lint": "*",
+    "mocha": "*",
+    "underscore": "*"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-jscs": "^0.6.2"
+  }
+}

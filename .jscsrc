@@ -4,24 +4,20 @@
   ]
 , "requireLineFeedAtFileEnd": true
 , "disallowMultipleLineBreaks": true
-, "requireMultipleVarDecl": true
+, "disallowMultipleVarDecl": true
 , "disallowEmptyBlocks": true
 , "disallowSpaceAfterObjectKeys": true
-, "disallowCommaBeforeLineBreak": true
-, "disallowTrailingWhitespace": true
-, "requireCapitalizedConstructors": true
-, "requireSpacesInsideObjectBrackets": "all"
-, "requireSpacesInsideArrayBrackets": "all"
+, "requireCommaBeforeLineBreak": true
+, "requireCurlyBraces": [ "if", "else", "for", "while", "do", "switch", "try", "catch" ]
+, "disallowTrailingComma": true
+, "disallowSpacesInsideParentheses": true
 , "validateLineBreaks": "LF"
 , "requireSpaceBeforeBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
 , "requireSpaceAfterBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
-, "requireSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "try", "catch" ]
-, "disallowLeftStickedOperators": [ "?", "+", "/", "*", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=" ]
-, "disallowRightStickedOperators": [ "?", "+", "/", "*", ":", "=", "==", "===", "!=", "!==", ">", ">=", "<", "<=" ]
+, "disallowSpaceAfterKeywords": [ "if", "else", "for", "while", "do", "switch", "try", "catch" ]
 , "disallowSpaceAfterPrefixUnaryOperators": [ "++", "--", "+", "-", "~", "!" ]
 , "disallowSpaceBeforePostfixUnaryOperators": [ "++", "--" ]
 , "requireSpaceBeforeBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
 , "requireSpaceAfterBinaryOperators": [ "+", "-", "/", "*", "=", "==", "===", "!=", "!==" ]
-, "disallowKeywordsOnNewLine": [ "else" ]
-, "requireSpacesInFunctionExpression": { "beforeOpeningCurlyBrace": false }
+, "disallowKeywordsOnNewLine": [ "else", "catch" ]
 }

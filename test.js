@@ -1,4 +1,4 @@
-var metro = require('../model/metro');
+var metro = require('./model');
 
 var nextPerson = (function(){
 	var people = ['Василий Пупкин', 'Надежда Крупская', 'Вера Брежнева'];

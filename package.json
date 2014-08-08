@@ -15,19 +15,17 @@
   },
   "scripts": {
     "style": "./node_modules/.bin/jscs .",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
-    "clean": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage"
+    "cover": "./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha -- --recursive -R spec -r should",
+    "clean": "./node_modules/.bin/istanbul check-coverage && rm -rf coverage",
+    "test": "npm run-script cover && npm run-script style"
   },
   "dependencies": {
     "underscore": "*"
   },
   "devDependencies": {
     "grunt": "*",
-    "grunt-jscs": "*",
     "istanbul": "*",
     "jscs": "*",
-    "jshint": "*",
-    "lint": "*",
     "mocha": "*",
     "should": "*"
   }

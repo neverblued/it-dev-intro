@@ -3,7 +3,7 @@ var metro = require('./index');
 // coins
 
 metro.bank.check = function(coin){
-	return !! (coin && coin.active === true);
+	return !!(coin && coin.active === true);
 };
 
 metro.bank.activate = function(coin){

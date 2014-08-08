@@ -6,7 +6,7 @@ IT dev intro
 ### Test
 
 ```
-user@host:/project/folder$ npm test
+user@host:/project/folder$ npm install && npm test
 ```
 
 ```
@@ -46,4 +46,8 @@ Branches     : 100% ( 10/10 )
 Functions    : 100% ( 41/41 )
 Lines        : 100% ( 117/117 )
 ================================================================================
+```
+
+```
+No code style errors found.
 ```

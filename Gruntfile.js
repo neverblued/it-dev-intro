@@ -1,14 +1,17 @@
 module.exports = function(grunt){
 	
 	grunt.initConfig({
-//		pkg: grunt.file.readJSON('package.json'),
+		pkg: grunt.file.readJSON('package.json'),
 		
 		jscs: {
-			src: "*/*.js",
+			src: ['*.js', 'model/*.js'],
 			options: {
-				config: ".jscsrc"
+				config: '.jscsrc'
 			}
 		}
 	});
 
+	grunt.loadNpmTasks('grunt-jscs');
+
+//	grunt.registerTask('default', []);
 };

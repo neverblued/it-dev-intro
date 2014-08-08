@@ -2,7 +2,7 @@ var metro = require('./index');
 
 metro.tourniquet.format = {
 	limit: function(){
-		return 'Проходите ' + this.people;
+		return 'Оплачено: ' + this.people;
 	},
 	pass: function(person){
 		var text = person + ', проходите!';

@@ -1,24 +1,28 @@
 var metro = require('./index');
 
-metro.tourniquet.prototype.feed = function(coin){
-	this.try(function(){
-		if(metro.bank.fake(coin)){
+metro.protocol = {};
+
+metro.protocol.welcome = {};
+
+metro.protocol.welcome.feed = function(tourniquet, coin){
+	tourniquet.try(function(){
+		if(this.check(coin)){
+			this.consume(coin);
+			this.admit();
+			this.display('limit');
+		}else{
 			this.reject(coin);
 			this.signal('fake', coin);
-		}else{
-			this.consume(coin);
-			this.grantAccess();
-			this.display('limit');
 		}
 	});
 };
 
-metro.tourniquet.prototype.pass = function(person){
-	this.try(function(){
+metro.protocol.welcome.pass = function(tourniquet, person){
+	tourniquet.try(function(){
 		if(this.gate()){
 			this.signal('stop');
 		}else{
-			this.letGo(person);
+			this.omit(person);
 			this.display('pass', person);
 		}
 	});

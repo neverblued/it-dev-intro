@@ -1,9 +1,9 @@
 var metro = require('./index');
 
-metro.bank = {};
+// entities
 
 metro.coin = function(){
-	metro.bank.activate(this);
+	this.used = false;
 };
 
 metro.tourniquet = function(){
@@ -14,16 +14,12 @@ metro.tourniquet = function(){
 
 // coins
 
-metro.bank.fake = function(coin){
-	return !coin || !coin.active;
-};
-
-metro.bank.activate = function(coin){
-	coin.active = true;
-};
-
 metro.coin.prototype.use = function(){
-	this.active = false;
+	this.used = true;
+};
+
+metro.tourniquet.prototype.check = function(coin){
+	return !!(coin && coin instanceof metro.coin && !coin.used);
 };
 
 metro.tourniquet.prototype.consume = function(coin){
@@ -37,14 +33,14 @@ metro.tourniquet.prototype.reject = function(coin){
 
 // people
 
-metro.tourniquet.prototype.grantAccess = function(){
+metro.tourniquet.prototype.admit = function(){
 	this.people++;
 };
 
-metro.tourniquet.prototype.letGo = function(){
+metro.tourniquet.prototype.omit = function(){
 	this.people--;
 };
 
 metro.tourniquet.prototype.gate = function(){
-	return !this.people;
+	return this.people < 1;
 };

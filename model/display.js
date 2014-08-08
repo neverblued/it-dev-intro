@@ -2,16 +2,20 @@ var metro = require('./index');
 
 metro.tourniquet.format = {
 	limit: function(){
-		return 'ещё ' + this.people;
+		return 'Проходите ' + this.people;
 	},
 	pass: function(person){
-		return person + ', проходите! (' + this.message('limit') + ')';
+		var text = person + ', проходите!';
+		if(this.people > 0){
+			text += ' (ещё ' + this.people + ')';
+		}
+		return text;
 	},
 	stop: function(){
 		return 'Закрыто!';
 	},
 	fake: function(){
-		return 'Плохой жетон!';
+		return 'Жетон не опознан!';
 	}
 };
 

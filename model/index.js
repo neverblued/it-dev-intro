@@ -1,5 +1,4 @@
-require('./entity');
+require('./field');
+require('./signal');
+require('./display');
 require('./protocol');
-require('./method');
-require('./condition');
-require('./message');

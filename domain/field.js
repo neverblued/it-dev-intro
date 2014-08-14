@@ -33,14 +33,14 @@ metro.tourniquet.prototype.reject = function(coin){
 
 // people
 
+metro.tourniquet.prototype.gate = function(){
+	return this.people < 1;
+};
+
 metro.tourniquet.prototype.admit = function(){
 	this.people++;
 };
 
 metro.tourniquet.prototype.omit = function(){
 	this.people--;
-};
-
-metro.tourniquet.prototype.gate = function(){
-	return this.people < 1;
 };

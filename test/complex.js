@@ -1,32 +1,33 @@
-var should = require('should');
-var metro = require('../model');
+var expect = require('chai').expect;
+var should = require('chai').should();
+
+var metro = require('../domain');
 var tourniquet;
 
 describe('Экспериментальное окружение', function(){
-	(function(){
 		
-		it('турникет установлен', function(){
-			should(tourniquet = new metro.tourniquet).be.ok;
-			tourniquet.gate().should.be.true;
-		});
-		
-		it('есть жетоны', function(){
-			should(new metro.coin).be.ok;
-		});
-		
-		it('жетоны используются', function(){
-			var coin = new metro.coin;
-			coin.use();
-			tourniquet.check(coin).should.be.false;
-		});
-		
-		it('жетоны проверяются', function(){
-			tourniquet.check('обычный пластиковый кружочек').should.be.false;
-			tourniquet.check({used: false}).should.be.false;
-			tourniquet.check(undefined).should.be.false;
-		});
-		
-	}).should.not.throw();
+	it('турникет установлен', function(){
+		tourniquet = new metro.tourniquet;
+		expect(tourniquet).to.be.an.instanceOf(metro.tourniquet);
+		expect(tourniquet.gate()).to.be.true;
+	});
+
+	it('жетоны есть', function(){
+		expect(new metro.coin).to.be.ok;
+	});
+
+	it('жетоны используются', function(){
+		var coin = new metro.coin;
+		expect(tourniquet.check(coin)).to.be.true;
+		coin.use();
+		expect(tourniquet.check(coin)).to.be.false;
+	});
+
+	it('жетоны проверяются', function(){
+		expect(tourniquet.check('обычный пластиковый кружочек')).to.be.false;
+		expect(tourniquet.check({used: false})).to.be.false;
+		expect(tourniquet.check(undefined)).to.be.false;
+	});
 });
 
 describe('Турникет', function(){

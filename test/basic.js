@@ -1,45 +1,30 @@
-var should = require('should');
-var assert = {};
+var expect = require('chai').expect;
 
-assert.protocol = function(protocol, methods){
-	should(protocol).be.type('object').with.properties(methods);
-};
+var metro = require('../domain');
 
-assert.entity = function(target){
-	(function(){
-		should(target).be.ok.and.type('function');
-		should(new target).be.ok.and.instanceOf(target);
-	}).should.not.throw();
-};
-
-assert.method = function(target){
-	should(target).be.ok.and.type('function');
-};
-
-assert.methods = function(target, list){
-	list.forEach(function(method){
-		assert.method(target[method]);
-	});
-};
-
-var metro = require('../model');
 describe('Модель пропускной системы метро', function(){
 	
-	it('описывает протокол взаимодействия пассажира с системой', function(){
-		should(metro.protocol).be.ok;
-		assert.protocol(metro.protocol.welcome, ['feed', 'pass']);
+	describe('описывает протокол взаимодействия', function(){
+		it('пассажира с системой при входе', function(){
+			expect(metro.protocol).to.have.keys('welcome');
+			expect(metro.protocol.welcome).to.have.keys('feed', 'pass');
+		});
 	});
 	
-	it('описывает сущности жетона и турникета', function(){
-		assert.entity(metro.coin);
-		assert.entity(metro.tourniquet);
-	});
-	
-	it('описывает методы жетона', function(){
-		assert.methods(metro.coin.prototype, ['use']);
-	});
-	
-	it('описывает методы турникета', function(){
-		assert.methods(metro.tourniquet.prototype, ['check', 'consume', 'reject', 'admit', 'omit', 'gate']);
+	describe('описывает сущности', function(){
+		it('жетон', function(){
+			expect(metro.coin).to.be.a('function');
+			expect(metro.coin.prototype).to.have.keys('use');
+			expect(new metro.coin).to.be.an.instanceOf(metro.coin);
+		});
+		it('турникет', function(){
+			expect(metro.tourniquet).to.be.a('function');
+			expect(metro.tourniquet.prototype).to.contain.keys(
+				'check', 'consume', 'reject', // for coins
+				'gate', 'admit', 'omit', // for people
+				'signal', 'display' // for interaction
+			);
+			expect(new metro.tourniquet).to.be.an.instanceOf(metro.tourniquet);
+		});
 	});
 });
